@@ -48,12 +48,11 @@
                                 <ul class="dropdown-wrap text-matterhorn">
                                     <li class="dropdown">
                                         <button class="btn btn-link dropdown-toggle ht-btn" type="button" id="languageButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                            English
+                                            {{value}}
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="languageButton">
-                                            <li><a class="dropdown-item" href="#">French</a></li>
-                                            <li><a class="dropdown-item" href="#">Italian</a></li>
-                                            <li><a class="dropdown-item" href="#">Spanish</a></li>
+                                            <li><a href="index.html?LanguageId=vi-VN" class="dropdown-item" href="#">vi-VN</a></li>
+                                            <li><a href="index.html?LanguageId=en-US" class="dropdown-item" href="#">en-US</a></li>
                                         </ul>
                                     </li>
                                     <li class="dropdown">
@@ -752,7 +751,7 @@
                                     <div ng-repeat="x in listProducts" class="col-xl-3 col-lg-4 col-sm-6" style="margin-bottom: 40px;">
                                         <div class="product-item">
                                             <div class="product-img img-zoom-effect">
-                                                <a href="single-product.html">
+                                                <a href="single-product-variable.html?ProductID={{x.productID}}&LanguageId={{value}}">
                                                     <img class="img-full" src="E:\testcode\Năm 3\Kì 2\Lập Trình Web API\BTL_WEB_API_ShopQuanAo\Image\{{x.imagePath}}" alt="Product Images">
                                                 </a>
                                                 <div class="product-add-action">
