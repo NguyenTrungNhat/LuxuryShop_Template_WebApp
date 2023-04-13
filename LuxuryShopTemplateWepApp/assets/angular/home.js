@@ -1,5 +1,7 @@
 var app = angular.module('LuxuryShop', []);
 app.controller("HomeCtrl", function ($scope, $http, $window) {
+    var user = JSON.parse($window.sessionStorage.getItem("user"));
+    $scope.UserName = user.username;
     // $scope.listSanPhamMoi;  
     // $scope.LoadSanPhamMoi = function () {		 
     //     $http({
