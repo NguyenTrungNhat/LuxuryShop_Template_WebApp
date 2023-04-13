@@ -1,17 +1,10 @@
 var app = angular.module('LuxuryShop', []);
 app.controller("HomeCtrl", function ($scope, $http, $window) {
+    $scope.UserName;
     var user = JSON.parse($window.sessionStorage.getItem("user"));
-    $scope.UserName = user.username;
-    // $scope.listSanPhamMoi;  
-    // $scope.LoadSanPhamMoi = function () {		 
-    //     $http({
-    //         method: 'GET', 
-    //         url: current_url + '/api/Home/get-moi/10',
-    //     }).then(function (response) {			 
-    //         $scope.listSanPhamMoi = response.data;
-    // 		makeScript('js/main.js')
-    //     });
-    // };  
+    if(user != null){
+        $scope.UserName = user.username;
+    }  
     var key = 'LanguageId';
     $scope.value = window.location.search.substring(window.location.search.indexOf(key) + key.length + 1);
     if ($scope.value == '') {
@@ -70,6 +63,23 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
         });
     };
 
+    $scope.handleButtonClick = function(x){
+        const quantity = window.prompt('Số lượng cần mua?');
+        if (quantity && !isNaN(quantity)) {
+            const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const existingItem = cart.find(item => item.productID === x.productID);
+            if (existingItem) {
+                existingItem.quantity += Number(quantity);
+            } else {
+                cart.push({
+                    ...x,
+                    quantity: Number(quantity)
+                });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert("Thêm vào giỏ hàng thành công !");
+        }
+    };
 
     $scope.LoadCategoryByLanguage();
     $scope.LoadProductByLanguage();
