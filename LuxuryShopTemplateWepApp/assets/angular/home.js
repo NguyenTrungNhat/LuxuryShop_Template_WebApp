@@ -64,7 +64,8 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
     };
 
     $scope.handleButtonClick = function(x){
-        const quantity = window.prompt('Số lượng cần mua?');
+        //const quantity = window.prompt('Số lượng cần mua?');
+        var quantity = 1;
         if (quantity && !isNaN(quantity)) {
             const cart = JSON.parse(localStorage.getItem('cart') || '[]');
             const existingItem = cart.find(item => item.productID === x.productID);
@@ -73,13 +74,25 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
             } else {
                 cart.push({
                     ...x,
-                    quantity: Number(quantity)
+                    quantity: Number(quantity),
                 });
             }
             localStorage.setItem('cart', JSON.stringify(cart));
+            $window.location.reload();
             alert("Thêm vào giỏ hàng thành công !");
         }
     };
+
+    $scope.cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    $scope.total_price = 0;
+    $scope.cart_quantity = 0;
+
+    if($scope.cart != ''){
+        for(var i =0;i<$scope.cart.length;i++){
+            $scope.total_price += $scope.cart[i].quantity * $scope.cart[i].price;
+            $scope.cart_quantity += $scope.cart[i].quantity;
+        }
+    }
 
     $scope.LoadCategoryByLanguage();
     $scope.LoadProductByLanguage();

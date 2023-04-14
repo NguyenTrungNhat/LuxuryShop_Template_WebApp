@@ -138,7 +138,7 @@
                                         <li class="minicart-wrap me-3 me-lg-0">
                                             <a href="#miniCart" class="minicart-btn toolbar-btn">
                                                 <i class="pe-7s-shopbag"></i>
-                                                <span class="quantity">3</span>
+                                                <span class="quantity">{{cart_quantity}}</span>
                                             </a>
                                         </li>
                                         <li class="mobile-menu_wrap d-block d-lg-none">
@@ -510,49 +510,29 @@
                             <h4 class="mb-0">Shopping Cart</h4>
                             <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
                         </div>
-                        <ul class="minicart-list">
-                            <li class="minicart-product">
+                        <ul ng-if="cart != ''" class="minicart-list">
+                            <li ng-repeat="item in cart" class="minicart-product">
                                 <a class="product-item_remove" href="#"><i
                                     class="pe-7s-close"></i></a>
                                 <a href="shop.html" class="product-item_img">
-                                    <img class="img-full" src="assets/images/product/small-size/1-1-112x124.jpg" alt="Product Image">
+                                    <img class="img-full" src="E:\testcode\Năm 3\Kì 2\Lập Trình Web API\BTL_WEB_API_ShopQuanAo\Image\{{item.imagePath}}" alt="Product Image">
                                 </a>
                                 <div class="product-item_content">
-                                    <a class="product-item_title" href="shop.html">Black Pepper Grains</a>
-                                    <span class="product-item_quantity">1 x $80.00</span>
+                                    <a class="product-item_title" href="shop.html">{{item.name}}</a>
+                                    <span class="product-item_quantity">{{item.quantity}} x {{item.price | number}}</span>
                                 </div>
                             </li>
-                            <li class="minicart-product">
-                                <a class="product-item_remove" href="#"><i
-                                    class="pe-7s-close"></i></a>
-                                <a href="shop.html" class="product-item_img">
-                                    <img class="img-full" src="assets/images/product/small-size/1-2-112x124.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-item_content">
-                                    <a class="product-item_title" href="shop.html">Peanut Big Bean</a>
-                                    <span class="product-item_quantity">1 x $80.00</span>
-                                </div>
-                            </li>
-                            <li class="minicart-product">
-                                <a class="product-item_remove" href="#">
-                                    <i class="pe-7s-close"></i>
-                                </a>
-                                <a href="shop.html" class="product-item_img">
-                                    <img class="img-full" src="assets/images/product/small-size/1-3-112x124.jpg" alt="Product Image">
-                                </a>
-                                <div class="product-item_content">
-                                    <a class="product-item_title" href="shop.html">Dried Lemon Green</a>
-                                    <span class="product-item_quantity">1 x $80.00</span>
-                                </div>
-                            </li>
+                        </ul>
+                        <ul ng-if="cart == ''" class="minicart-list">
+                            <h4 class="mb-0">Không có sản phẩm nào trong giỏ hàng</h4>
                         </ul>
                     </div>
                     <div class="minicart-item_total">
                         <span>Subtotal</span>
-                        <span class="ammount">$240.00</span>
+                        <span class="ammount">{{total_price | number}}</span>
                     </div>
                     <div class="group-btn_wrap d-grid gap-2">
-                        <a href="cart.html" class="btn btn-secondary btn-primary-hover">View Cart</a>
+                        <a href="cart.html?LanguageId={{value}}" class="btn btn-secondary btn-primary-hover">View Cart</a>
                         <a href="checkout.html" class="btn btn-secondary btn-primary-hover">Checkout</a>
                     </div>
                 </div>
