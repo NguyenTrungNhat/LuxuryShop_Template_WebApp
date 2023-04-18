@@ -32,5 +32,38 @@ app.controller("CartCtrl", function ($scope, $http, $window) {
         }
     }
 
+    $scope.removeItem = function(item) {
+        var itemIndex = $scope.cart.indexOf(item);
+        $scope.cart.splice(itemIndex,1);
+        localStorage.setItem('cart', JSON.stringify($scope.cart));
+        $window.location.reload();
+    }
+
+    $scope.increaseQuantity = function(item) {
+        for(var i =0;i<$scope.cart.length;i++){
+            if($scope.cart[i].productID == item.productID){
+                $scope.cart[i].quantity++;
+            }
+        }
+        localStorage.setItem('cart', JSON.stringify($scope.cart));
+        $window.location.reload();
+    }
+
+    $scope.reduceQuantity = function(item) {
+        for(var i =0;i<$scope.cart.length;i++){
+            if($scope.cart[i].productID == item.productID){
+                if($scope.cart[i].quantity == 1){
+                    var itemIndex = $scope.cart.indexOf(item);
+                    $scope.cart.splice(itemIndex,1);
+                }
+                else{
+                    $scope.cart[i].quantity--;
+                }
+                
+            }
+        }
+        localStorage.setItem('cart', JSON.stringify($scope.cart));
+        $window.location.reload();
+    }
     $scope.LoadCategoryByLanguage();    
 });

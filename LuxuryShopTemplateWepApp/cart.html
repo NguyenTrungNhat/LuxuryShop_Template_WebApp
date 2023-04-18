@@ -716,7 +716,7 @@
                     <div class="row">
                         <div class="col-12">
                             <form action="javascript:void(0)">
-                                <div class="table-content table-responsive">
+                                <div ng-if="cart != ''" class="table-content table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -731,8 +731,8 @@
                                         <tbody>
                                             <tr ng-repeat="item in cart">
                                                 <td class="product_remove">
-                                                    <a href="javascript:void(0)">
-                                                        <i class="pe-7s-close" title="Remove"></i>
+                                                    <a href="">
+                                                        <i ng-click="removeItem(item)" class="pe-7s-close" title="Remove"></i>
                                                     </a>
                                                 </td>
                                                 <td class="product-thumbnail">
@@ -743,14 +743,56 @@
                                                 <td class="product-name"><a href="javascript:void(0)">{{item.name}}</a></td>
                                                 <td class="product-price"><span class="amount">{{item.price | number}}</span></td>
                                                 <td class="quantity">
-                                                    <div class="cart-plus-minus">
-                                                        <input class="cart-plus-minus-box" value="{{item.quantity}}" type="text">
+                                                    <div style="margin: 0 auto;background-color: #f6f6f6;
+                                                                position: relative;
+                                                                width: 76px;
+                                                                text-align: left;" class="">
+                                                        <input style="border: 1px solid #f6f6f6;
+                                                        background-color: #f6f6f6;
+                                                        text-align: center;
+                                                        width: 75px;
+                                                        height: 50px;" class="cart-plus-minus-box" value="{{item.quantity}}" type="text">
+                                                        <div  style="left: 15px;
+                                                            cursor: pointer;
+                                                            position: absolute;
+                                                            -webkit-transition: all 0.3s ease 0s;
+                                                            -o-transition: all 0.3s ease 0s;
+                                                            transition: all 0.3s ease 0s;
+                                                            font-size: 10px;
+                                                            color: inherit;
+                                                            top: 50%;
+                                                            -webkit-transform: translateY(-50%);
+                                                            -ms-transform: translateY(-50%);
+                                                            transform: translateY(-50%);" class="dec qtybutton">
+                                                            <i ng-click="reduceQuantity(item)" class="fa fa-minus"></i>
+                                                        </div>
+                                                        <div  style="left: auto;
+                                                                    right: 15px;
+                                                                    cursor: pointer;
+                                                                    position: absolute;
+                                                                    -webkit-transition: all 0.3s ease 0s;
+                                                                    -o-transition: all 0.3s ease 0s;
+                                                                    transition: all 0.3s ease 0s;
+                                                                    font-size: 10px;
+                                                                    color: inherit;
+                                                                    top: 50%;
+                                                                    -webkit-transform: translateY(-50%);
+                                                                    -ms-transform: translateY(-50%);
+                                                                    transform: translateY(-50%);" class="inc qtybutton">
+                                                            <i ng-click="increaseQuantity(item)" class="fa fa-plus"></i>
+                                                        </div>
                                                     </div>
+                                                    
                                                 </td>
                                                 <td class="product-subtotal"><span class="amount">{{item.quantity*item.price | number}}</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div ng-if="cart == ''" class="table-content table-responsive">
+                                    <div class="p-4 mb-3 bg-green-400 rounded" style="background-color: aquamarine;">
+                                        <p class="text-green-800">Không có sản phẩm nào trong giỏ hàng !</p>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
@@ -760,7 +802,7 @@
                                                 <input class="button mt-xxs-30" name="apply_coupon" value="Apply coupon" type="submit">
                                             </div>
                                             <div class="coupon2">
-                                                <input class="button" name="update_cart" value="Update cart" type="submit">
+                                                <!-- <input  class="button" name="update_cart" value="Update cart" type="submit"> -->
                                             </div>
                                         </div>
                                     </div>
