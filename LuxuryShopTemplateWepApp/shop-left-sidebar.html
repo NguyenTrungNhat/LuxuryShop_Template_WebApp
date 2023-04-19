@@ -1236,10 +1236,9 @@
                                                 <span class="fa fa-chevron-left"></span>
                                             </a>
                                         </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li ng-repeat="page in totalPages"  class="page-item"><a ng-click="LoadProductByLanguage(page)" class="page-link" style="cursor: pointer;">{{page}}</a></li>
                                         <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
+                                            <a ng-click="LoadProductByLanguage(page++)" class="page-link" aria-label="Next">
                                                 <span class="fa fa-chevron-right"></span>
                                             </a>
                                         </li>

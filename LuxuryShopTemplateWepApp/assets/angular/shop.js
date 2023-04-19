@@ -18,18 +18,25 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
     };
 
     $scope.listProducts;
-    $scope.page = 1;
+    // $scope.page = 1;
     $scope.pageSize = 9;
-    $scope.LoadProductByLanguage = function () {
+    $scope.totalPages;
+
+    $scope.LoadProductByLanguage = function (pageActive = 1) {
         $http({
             method: 'POST',
-            data: { page: $scope.page, pageSize: $scope.pageSize,languageId: $scope.value },
+            data: { page: pageActive, pageSize: $scope.pageSize,languageId: $scope.value },
             url: current_url + '/api/Product/getProductByLanguage',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
-            console.log($scope.listProducts);
+            $scope.totalPages= new Array((Math.ceil(response.data.totalItems / response.data.pageSize)));
+            for ( i = 0; i < $scope.totalPages.length; i++){
+                var j = i;
+                $scope.totalPages[i] = ++j;
+            }
         });
     };
+    
 
 
     $scope.listProducts
@@ -62,6 +69,8 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
         });
     };
 
+
+    
     
 
     $scope.LoadCategoryByLanguage();
