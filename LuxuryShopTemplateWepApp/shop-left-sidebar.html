@@ -1232,13 +1232,13 @@
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
                                         <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
+                                            <a ng-click="LoadProductByLanguage(PreviousPages)" class="page-link" aria-label="Previous" style="cursor: pointer;">
                                                 <span class="fa fa-chevron-left"></span>
                                             </a>
                                         </li>
                                         <li ng-repeat="page in totalPages"  class="page-item"><a ng-click="LoadProductByLanguage(page)" class="page-link" style="cursor: pointer;">{{page}}</a></li>
                                         <li class="page-item">
-                                            <a ng-click="LoadProductByLanguage(page++)" class="page-link" aria-label="Next">
+                                            <a ng-click="LoadProductByLanguage(NextPages)" class="page-link" aria-label="Next" style="cursor: pointer;">
                                                 <span class="fa fa-chevron-right"></span>
                                             </a>
                                         </li>

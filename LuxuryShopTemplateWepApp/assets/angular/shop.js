@@ -21,6 +21,9 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
     // $scope.page = 1;
     $scope.pageSize = 9;
     $scope.totalPages;
+    $scope.PreviousPages = 0;
+    $scope.NextPages = 0;
+
 
     $scope.LoadProductByLanguage = function (pageActive = 1) {
         $http({
@@ -30,9 +33,20 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
         }).then(function (response) {
             $scope.listProducts = response.data.data;
             $scope.totalPages= new Array((Math.ceil(response.data.totalItems / response.data.pageSize)));
+            
             for ( i = 0; i < $scope.totalPages.length; i++){
                 var j = i;
                 $scope.totalPages[i] = ++j;
+            }
+            
+            $scope.NextPages = response.data.page+1;
+            $scope.PreviousPages = response.data.page-1;
+            console.log($scope.totalPages[$scope.totalPages.length-1])
+            if($scope.NextPages > $scope.totalPages[$scope.totalPages.length-1]){
+                $scope.NextPages = 1;
+            }
+            if($scope.PreviousPages == 0){
+                $scope.PreviousPages = $scope.totalPages[$scope.totalPages.length-1];
             }
         });
     };
@@ -41,11 +55,11 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
 
     $scope.listProducts
     $scope.page = 1;
-    $scope.pageSize = 9;
+    $scope.pageSizeCate = 9;
     $scope.LoadProductByCate = function(x) {
         $http({
             method: 'POST',
-            data: { page: $scope.page, pageSize: $scope.pageSize,CatID: x.catID, languageId: $scope.value },
+            data: { page: $scope.page, pageSize: $scope.pageSizeCate,CatID: x.catID, languageId: $scope.value },
             url: current_url + '/api/Product/getProductByCate',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
