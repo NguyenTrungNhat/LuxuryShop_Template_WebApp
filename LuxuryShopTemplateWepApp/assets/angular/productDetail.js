@@ -1,5 +1,6 @@
 var app = angular.module('LuxuryShop', []);
 app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
+    $scope.current_img = _current_img;
     var keylanguage = 'LanguageId';
     var keyproduct = 'ProductID';
     $scope.value = window.location.search.substring(window.location.search.indexOf(keylanguage) + keylanguage.length + 1);

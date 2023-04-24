@@ -1,5 +1,6 @@
 var app = angular.module('LuxuryShop', []);
 app.controller("CheckoutCtrl", function ($scope, $http, $window) {
+    $scope.current_img = _current_img;
     $scope.UserName;
     var user = JSON.parse($window.sessionStorage.getItem("user"));
     if(user != null){

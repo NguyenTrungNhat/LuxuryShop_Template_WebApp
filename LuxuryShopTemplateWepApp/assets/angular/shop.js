@@ -1,5 +1,6 @@
 var app = angular.module('LuxuryShop', []);
 app.controller("ShopCtrl", function ($scope, $http, $window) {
+    $scope.current_img = _current_img;
     var key = 'LanguageId';
     $scope.value = window.location.search.substring(window.location.search.indexOf(key) + key.length + 1);
     if ($scope.value == '') {
