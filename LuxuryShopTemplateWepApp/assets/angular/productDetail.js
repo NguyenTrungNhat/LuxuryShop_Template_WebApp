@@ -41,8 +41,10 @@ app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
                 $scope.listProductWithCate = response.data.data;
                 console.log($scope.listProductWithCate);
             });
-
-            
+            const jsonString = $scope.ProductDetail.imagePath;
+            const jsonArray = JSON.parse(jsonString);
+            $scope.listImageProduct = jsonArray;
+            console.log($scope.listImageProduct);
             console.log($scope.ProductDetail);
         });
     };

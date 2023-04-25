@@ -582,43 +582,20 @@
                             <div class="single-product-img">
                                 <div class="swiper-container single-product-slider">
                                     <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <a href="{{current_img}}/{{ProductDetail.imagePath}}" class="single-img gallery-popup">
-                                                <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Image">
+                                        <div ng-repeat="image in listImageProduct" class="swiper-slide">
+                                            <a href="{{current_img}}/{{image.imagePath}}" class="single-img gallery-popup">
+                                                <img class="img-full" src="{{current_img}}/{{image.ImagePath}}" alt="Product Image">
                                             </a>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <a href="{{current_img}}/{{ProductDetail.imagePath}}" class="single-img gallery-popup">
-                                                <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Image">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="{{current_img}}/{{ProductDetail.imagePath}}" class="single-img gallery-popup">
-                                                <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Image">
-                                            </a>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <a href="{{current_img}}/{{ProductDetail.imagePath}}" class="single-img gallery-popup">
-                                                <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Image">
-                                            </a>
-                                        </div>
+                        
                                     </div>
                                     <!-- Add Pagination -->
                                     <div class="swiper-pagination"></div>
                                 </div>
                                 <div class="swiper-container single-product-thumbs pt-6">
                                     <div class="swiper-wrapper">
-                                        <a href="javascript:void(0)" class="swiper-slide">
-                                            <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Thumnail">
-                                        </a>
-                                        <a href="javascript:void(0)" class="swiper-slide">
-                                            <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Thumnail">
-                                        </a>
-                                        <a href="javascript:void(0)" class="swiper-slide">
-                                            <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Thumnail">
-                                        </a>
-                                        <a href="javascript:void(0)" class="swiper-slide">
-                                            <img class="img-full" src="{{current_img}}/{{ProductDetail.imagePath}}" alt="Product Thumnail">
+                                        <a ng-repeat="image in listImageProduct" href="" class="swiper-slide">
+                                            <img class="img-full" src="{{current_img}}/{{image.ImagePath}}" alt="Product Thumnail">
                                         </a>
                                     </div>
                                 </div>
