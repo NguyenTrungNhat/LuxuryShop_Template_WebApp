@@ -28,6 +28,8 @@ app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
             url: current_url + '/api/Product/GetProductDetail/' + $scope.id +'/'+ $scope.value,
         }).then(function (response) {
             $scope.ProductDetail = response.data;
+            $scope.listImageProduct = JSON.parse($scope.ProductDetail.imagePath);
+            console.log($scope.listImageProduct);
 
             $scope.listProductWithCate;
             $scope.page = 1;
@@ -41,10 +43,7 @@ app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
                 $scope.listProductWithCate = response.data.data;
                 console.log($scope.listProductWithCate);
             });
-            const jsonString = $scope.ProductDetail.imagePath;
-            const jsonArray = JSON.parse(jsonString);
-            $scope.listImageProduct = jsonArray;
-            console.log($scope.listImageProduct);
+            
             console.log($scope.ProductDetail);
         });
     };
