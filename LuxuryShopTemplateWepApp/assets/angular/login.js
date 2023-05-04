@@ -61,9 +61,7 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
                 data: formData,
                 url: current_url + '/api/Users/upload',
             }).then(function (res) {
-
                 user.Thumb = res.data;
-
                 $http({
                     method: 'POST',
                     
@@ -71,17 +69,18 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
                     url: current_url + '/api/Users/register',
                 }).then(function (response) {
                     alert('Thêm user thành công!');
+                    $window.location.reload();
                 });
             });
         } else {
             user.Thumb = $scope.Thumb;
             $http({
                 method: 'POST',
-                
                 data: user,
                 url: current_url + '/api/Users/register',
             }).then(function (response) {
                 alert('Thêm user thành công!');
+                $window.location.reload();
             });
         }
     };

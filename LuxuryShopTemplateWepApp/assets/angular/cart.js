@@ -66,5 +66,31 @@ app.controller("CartCtrl", function ($scope, $http, $window) {
         localStorage.setItem('cart', JSON.stringify($scope.cart));
         $window.location.reload();
     }
+
+    $scope.listOrderByUser;
+    $scope.loadOrderByUserName = function(){
+        $http({
+            method: 'GET',
+            url: current_url + '/api/Carts/' + $scope.UserName + '/GetEmailUser',
+        }).then(function (response) {
+            $http({
+                method: 'GET',
+                url: current_url + '/api/Carts/' + response.data + '/GetListCartAll',
+            }).then(function (response) {
+                $scope.listOrderByUser = response.data;
+            });
+        });
+    }
+
+    $scope.NhanHang = function(item) {
+        $http({
+            method: 'PUT',
+            url: current_url + '/api/Carts/' + item.orderID + '/Update-Status-User',
+        }).then(function (response) {
+            alert('Nhận hàng thàng công !');
+            $window.location.reload();
+        });
+    }
+    $scope.loadOrderByUserName();
     $scope.LoadCategoryByLanguage();    
 });

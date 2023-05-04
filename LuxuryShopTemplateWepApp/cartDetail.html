@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Harmic - Login | Register</title>
+    <title>Harmic - Cart</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,14 +28,13 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-
     <script src="assets/angular/angular.min.js"></script>
     <script src="assets/angular/global.js"></script>
-	<script src="assets/angular/login.js"></script>
+	<script src="assets/angular/cartDetail.js"></script>
 
 </head>
 
-<body ng-app="LuxuryShopAdmin" ng-controller="LoginCtrl">
+<body ng-app="LuxuryShop" ng-controller="CartDetailCtrl">
 
     <div class="main-wrapper">
 
@@ -695,7 +694,7 @@
 
         <!-- Begin Main Content Area -->
         <main class="main-content">
-            <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1-1-1920x373.jpg">
+            <div class="breadcrumb-area breadcrumb-height" data-bg-image="assets/images/breadcrumb/bg/1920x373.png">
                 <div class="container h-100">
                     <div class="row h-100">
                         <div class="col-lg-12">
@@ -705,95 +704,90 @@
                                     <li>
                                         <a href="index.html">Home <i class="pe-7s-angle-right"></i></a>
                                     </li>
-                                    <li>Login | Register</li>
+                                    <li>Cart</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="login-register-area section-space-y-axis-100">
+            <div class="cart-area section-space-y-axis-100">
                 <div class="container">
+                    <br><br>
+                    <h2>Danh sách đơn hàng đã đặt</h2>
                     <div class="row">
-                        <div class="col-lg-6">
-                            <form ng-submit="getToken()">
-                                <div class="login-form">
-                                    <h4 class="login-title">Đăng nhập</h4>
-                                    <div class="row">
-                                        <div class="form-group col-lg-12">
-                                            <label class="font-weight-semibold" for="userName">Username:</label>
-                                            <div class="input-affix">
-                                                <i class="prefix-icon anticon anticon-user"></i>
-                                                <input ng-model="userName" type="text" class="form-control" id="userName" placeholder="Username">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-lg-12">
-                                            <label class="font-weight-semibold" for="password">Password:</label>
-                                            <a class="float-right font-size-13 text-muted" href="">Quên mật khẩu?</a>
-                                            <div class="input-affix m-b-10">
-                                                <i class="prefix-icon anticon anticon-lock"></i>
-                                                <input ng-model="password" type="password" class="form-control" id="password" placeholder="Password">
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-4 pt-1 mt-md-0">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <span class="font-size-13 text-muted">
-                                                </span>
-                                                <button type="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0">Đăng Nhập</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-lg-6 pt-10 pt-lg-0">
-                            <form ng-submit="Save()">
-                                <div class="login-form">
-                                    <h4 class="login-title">Đăng ký</h4>
-                                    <div class="row">
-                                        <div class="form-group col-12">
-                                            <label for="formGroupExampleInput">Họ tên : </label>
-                                            <input ng-model="FullName" type="text" class="form-control" id="FullName" placeholder="Họ tên">
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <label for="formGroupExampleInput2">Ngày sinh (yyyy-mm-dd) :</label>
-                                            <input ng-model="BirthDay" type="text" class="form-control" id="BirthDay" placeholder="Ngày sinh">
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <label for="formGroupExampleInput2">Gender : </label>
-                                            <input ng-model="Gender" type="text" class="form-control" id="Gender" placeholder="Giới tính">
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <label for="formGroupExampleInput2">Ảnh đại diện : </label>
-                                            <input ng-model="Thumb" type="file" file="file" class="form-control" id="Thumb" placeholder="Ảnh đại diện">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="formGroupExampleInput2">Địa chỉ :</label>
-                                            <input ng-model="Address" type="text" class="form-control" id="Address" placeholder="Địa chỉ">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="formGroupExampleInput2">Email : </label>
-                                            <input ng-model="Email" type="text" class="form-control" id="Email" placeholder="Email">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="formGroupExampleInput2">Số điện thoại : </label>
-                                            <input ng-model="Phone" type="text" class="form-control" id="Phone" placeholder="Số điện thoại">
-                                        </div>
-                                        <div class="form-group col-12">
-                                            <label for="formGroupExampleInput2">Tài khoản : </label>
-                                            <input ng-model="UserName" type="text" class="form-control" id="UserName" placeholder="Tài khoản">
-                                        </div>
-                                        <div class="form-group col-12">
-                                            <label for="formGroupExampleInput2">Mật khẩu : </label>
-                                            <input ng-model="Password" type="text" class="form-control" id="Password" placeholder="Mật khẩu">
-                                        </div>
-                                        <button type="submit" class="btn btn-custom-size lg-size btn-secondary btn-primary-hover rounded-0 dang-ky">Đăng ký</button>
-                
-                                        &nbsp; &nbsp; &nbsp;
-
-
-                                        
-                                    </div>
+                        <div class="col-12">
+                            <form action="">
+                                <div ng-if="cart != ''" class="table-content table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="product_remove">FullName</th>
+                                                <th class="product-thumbnail">Address</th>
+                                                <th class="cart-product-name">Email</th>
+                                                <th class="product-price">Phone</th>
+                                                <th class="product-quantity">OrderDate</th>
+                                                <th class="product-subtotal">Status</th>
+                                                <th class="product-subtotal">ProductName</th>
+                                                <th class="product-subtotal">ProductImage</th>
+                                                <th class="product-subtotal">Qauntity</th>
+                                                <th class="product-subtotal">Price</th>
+                                                <th class="product-subtotal">TotalMoney</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in listOrderByUser">
+                                                <td class="">
+                                                    <a href="">
+                                                        {{item.fullName}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-thumbnail">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.address}}
+                                                    </a>
+                                                </td>
+                                                <td class=""><a href="javascript:void(0)">{{item.email}}</a></td>
+                                                <td class="product-price"><span class="amount">{{item.phone}}</span></td>
+                                                <td class="quantity">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.orderDate}}
+                                                    </a>
+                                                </td>
+                                                <td class="">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.statusOrder}}
+                                                    </a>
+                                                </td>
+                                                <td class="">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.productName}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <a href="javascript:void(0)">
+                                                        <img style="width: 112px; height: 124px;" src="{{current_img}}/{{item.productImage}}" alt="Cart Thumbnail">
+                                                    </a>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.quantity}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.price || number}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.totalMoney || number}}
+                                                    </a>
+                                                </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </form>
                         </div>
@@ -947,7 +941,6 @@
 
     <!--Main JS (Common Activation Codes)-->
     <script src="assets/js/main.js"></script>
-    <div id='mainDiv'></div>
 
 </body>
 

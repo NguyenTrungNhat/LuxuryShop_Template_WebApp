@@ -821,6 +821,63 @@
                             </form>
                         </div>
                     </div>
+
+                    <br><br>
+                    <h2>Danh sách đơn hàng đã đặt</h2>
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="">
+                                <div ng-if="cart != ''" class="table-content table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="product_remove">FullName</th>
+                                                <th class="product-thumbnail">Address</th>
+                                                <th class="cart-product-name">Email</th>
+                                                <th class="product-price">Phone</th>
+                                                <th class="product-quantity">OrderDate</th>
+                                                <th class="product-subtotal">Status</th>
+                                                <th class="product-subtotal">OrderDetail</th>
+                                                <th class="product-subtotal">Update Status Order</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in listOrderByUser">
+                                                <td class="product_remove">
+                                                    <a href="">
+                                                        {{item.fullName}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-thumbnail">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.address}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-name"><a href="javascript:void(0)">{{item.email}}</a></td>
+                                                <td class="product-price"><span class="amount">{{item.phone}}</span></td>
+                                                <td class="quantity">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.orderDate}}
+                                                    </a>
+                                                </td>
+                                                <td class="">
+                                                    <a href="javascript:void(0)">
+                                                        {{item.statusOrder}}
+                                                    </a>
+                                                </td>
+                                                <td class="product-subtotal">
+                                                    <a href="/LuxuryShopTemplateWepApp/cartDetail.html?email={{item.email}}">Chi tiết</a>
+                                                </td>
+                                                <td ng-click="NhanHang(item)" ng-if="item.statusOrder == 'Đang giao hàng'" class="product-subtotal">
+                                                    <a href="">Đã nhận hàng</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

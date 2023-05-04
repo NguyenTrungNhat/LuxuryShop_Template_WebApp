@@ -98,9 +98,6 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
             $scope.cart_quantity += $scope.cart[i].quantity;
         }
     }
-
-    
-
     $scope.LoadCategoryByLanguage();
     $scope.LoadProductByLanguage();
     $scope.LoadProductNew();
