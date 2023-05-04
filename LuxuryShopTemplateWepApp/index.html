@@ -117,7 +117,7 @@
                                             </button>
                                             <ul ng-if="UserName != ''" class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
                                                 <li><a class="dropdown-item" href="">{{UserName}}</a></li>
-                                                <li><a class="dropdown-item" href="my-account.html">Log out</a></li>
+                                                <li ng-click="Logout()"><a class="dropdown-item" >Log out</a></li>
                                             </ul> 
                                             <ul ng-if="UserName == ''" class="dropdown-menu dropdown-menu-end" aria-labelledby="settingButton">
                                                 <li><a class="dropdown-item" href="my-account.html">My account</a></li>
@@ -2245,13 +2245,13 @@
                                 <div ng-repeat="x in listProductsNew" class="swiper-slide">
                                     <div class="product-item">
                                         <div class="product-img img-zoom-effect">
-                                            <a href="single-product.html">
+                                            <a href="single-product-variable.html?ProductID={{x.productID}}&LanguageId={{value}}">
                                                 <img class="img-full" src="{{current_img}}/{{x.imagePath}}" alt="Product Images">
                                             </a>
                                             <div class="product-add-action">
                                                 <ul>
                                                     <li>
-                                                        <a href="cart.html">
+                                                        <a ng-click="handleButtonClick(x)" href="cart.html">
                                                             <i class="pe-7s-cart"></i>
                                                         </a>
                                                     </li>
@@ -2363,13 +2363,13 @@
                                         <div ng-repeat="x in listProductsBestSeller" class="col-xl-3 col-lg-4 col-sm-6" style="margin-bottom: 40px;">
                                             <div class="product-item">
                                                 <div class="product-img img-zoom-effect">
-                                                    <a href="single-product.html">
+                                                    <a href="single-product-variable.html?ProductID={{x.productID}}&LanguageId={{value}}">
                                                         <img class="img-full" src="{{current_img}}/{{x.imagePath}}" alt="Product Images">
                                                     </a>
                                                     <div class="product-add-action">
                                                         <ul>
                                                             <li>
-                                                                <a href="cart.html">
+                                                                <a ng-click="handleButtonClick(x)" href="cart.html">
                                                                     <i class="pe-7s-cart"></i>
                                                                 </a>
                                                             </li>

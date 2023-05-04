@@ -1,11 +1,11 @@
 var app = angular.module('LuxuryShop', []);
 app.controller("HomeCtrl", function ($scope, $http, $window) {
     $scope.current_img = _current_img;
-    $scope.UserName;
+    $scope.UserName = '';
     var user = JSON.parse($window.sessionStorage.getItem("user"));
     if(user != null){
         $scope.UserName = user.username;
-    }  
+    }
     var key = 'LanguageId';
     $scope.value = window.location.search.substring(window.location.search.indexOf(key) + key.length + 1);
     if ($scope.value == '') {
@@ -83,6 +83,10 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
             alert("Thêm vào giỏ hàng thành công !");
         }
     };
+    $scope.Logout = function() {
+        $window.sessionStorage.removeItem("user");
+        $window.location.reload();
+    };
 
     $scope.cart = JSON.parse(localStorage.getItem('cart') || '[]');
     $scope.total_price = 0;
@@ -94,6 +98,8 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
             $scope.cart_quantity += $scope.cart[i].quantity;
         }
     }
+
+    
 
     $scope.LoadCategoryByLanguage();
     $scope.LoadProductByLanguage();

@@ -1,13 +1,13 @@
 var app = angular.module('LuxuryShopAdmin',[]);
 app.controller("LoginCtrl", function ($scope, $http,$window){
-    var user = JSON.parse($window.sessionStorage.getItem("user"));
-    $scope.UserName = user.username;
     $scope.Token;  
-    $scope.getToken = function () { 		 
+    $scope.getToken = function () { 
+        console.log($scope.userName);	 
+        console.log($scope.password);	 
         $http({
             method: 'POST', 
             data: { UserName: $scope.userName, Password: $scope.password },
-            url: current_url + '/api/Users/authenticate',
+            url: current_url_admin + '/api/Users/authenticate',
         }).then(function (response) { 
             $scope.Token = response.data;
             console.log($scope.Token);
@@ -16,10 +16,10 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
                 token : $scope.Token
             }
             $window.sessionStorage.setItem('user', JSON.stringify(json));
-            $window.location.href = '/index.html';
+            $window.location.href = '/LuxuryShopTemplateWepApp/index.html';
         },function(error){
             alert(error.data);
-            $window.location.href = 'login-register.html';
+            $window.location.href = '/LuxuryShopTemplateWepApp/login-register.html';
         });
     }; 
 
