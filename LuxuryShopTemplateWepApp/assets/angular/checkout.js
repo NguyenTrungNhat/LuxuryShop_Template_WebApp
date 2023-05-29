@@ -60,7 +60,12 @@ app.controller("CheckoutCtrl", function ($scope, $http, $window) {
         }).then(function (response) {
             alert('Thanh toán thành công !');
             localStorage.removeItem('cart');
-            $window.location.href = 'E:/testcode/Năm 3/Kì 2/Lập Trình Web API/BTL_WEB_API_ShopQuanAo/Template/WepApp/LuxuryShopTemplateWepApp/index.html?LanguageId=' + $scope.value;
+            $window.location.href = '/LuxuryShopTemplateWepApp/index.html';
+        },function(errresponse){
+            if (errresponse.status == 400) {
+                alert('Trong kho không còn đủ hàng để giao !');
+                $window.location.href = '/LuxuryShopTemplateWepApp/cart.html' ;
+            }
         });
     }
 
