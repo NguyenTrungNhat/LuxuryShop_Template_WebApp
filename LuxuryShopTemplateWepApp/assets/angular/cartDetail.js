@@ -12,7 +12,11 @@ app.controller("CartDetailCtrl", function ($scope, $http, $window) {
         $scope.value = 'vi-VN'
     }
     var keyEmail = 'email';
-    $scope.emailUser = window.location.search.substring(window.location.search.indexOf(keyEmail) + keyEmail.length + 1);
+    $scope.emailUser = window.location.search.slice(window.location.search.indexOf(keyEmail) + keyEmail.length + 1, window.location.search.indexOf('&'));
+
+    var keyOrderID = 'orderID';
+    $scope.OrderID = window.location.search.substring(window.location.search.indexOf(keyOrderID) + keyOrderID.length + 1);
+
 
     $scope.listCategories;
     $scope.LoadCategoryByLanguage = function () {
@@ -29,7 +33,7 @@ app.controller("CartDetailCtrl", function ($scope, $http, $window) {
     $scope.loadOrderByUserName = function(){
         $http({
             method: 'GET',
-            url: current_url + '/api/Carts/' + $scope.emailUser + '/GetListOrderByEmail',
+            url: current_url + '/api/Carts/' + $scope.emailUser +'/'+ $scope.OrderID +'/GetListOrderByEmail',
         }).then(function (response) {
             $scope.listOrderByUser = response.data;
         });
