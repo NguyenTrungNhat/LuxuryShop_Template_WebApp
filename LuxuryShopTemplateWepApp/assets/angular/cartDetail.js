@@ -22,7 +22,7 @@ app.controller("CartDetailCtrl", function ($scope, $http, $window) {
     $scope.LoadCategoryByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Categories/getCategoriesByLanguage/' + $scope.value,
+            url: current_url + '/api-nguoidung/loai-sp/getCategoriesByLanguage/' + $scope.value,
         }).then(function (response) {
             $scope.listCategories = response.data;
             console.log($scope.listCategories);
@@ -33,7 +33,7 @@ app.controller("CartDetailCtrl", function ($scope, $http, $window) {
     $scope.loadOrderByUserName = function(){
         $http({
             method: 'GET',
-            url: current_url + '/api/Carts/' + $scope.emailUser +'/'+ $scope.OrderID +'/GetListOrderByEmail',
+            url: current_url + '/api-nguoidung/gio-hang/' + $scope.emailUser +'/'+ $scope.OrderID +'/GetListOrderByEmail',
         }).then(function (response) {
             $scope.listOrderByUser = response.data;
         });

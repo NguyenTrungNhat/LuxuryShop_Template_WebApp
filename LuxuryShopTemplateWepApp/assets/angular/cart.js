@@ -16,7 +16,7 @@ app.controller("CartCtrl", function ($scope, $http, $window) {
     $scope.LoadCategoryByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Categories/getCategoriesByLanguage/' + $scope.value,
+            url: current_url + '/api-nguoidung/loai-sp/getCategoriesByLanguage/' + $scope.value,
         }).then(function (response) {
             $scope.listCategories = response.data;
             console.log($scope.listCategories);
@@ -71,11 +71,11 @@ app.controller("CartCtrl", function ($scope, $http, $window) {
     $scope.loadOrderByUserName = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Carts/' + $scope.UserName + '/GetEmailUser',
+            url: current_url + '/api-nguoidung/gio-hang/' + $scope.UserName + '/GetEmailUser',
         }).then(function (response) {
             $http({
                 method: 'GET',
-                url: current_url + '/api/Carts/' + response.data + '/GetListCartAll',
+                url: current_url + '/api-nguoidung/gio-hang/' + response.data + '/GetListCartAll',
             }).then(function (response) {
                 $scope.listOrderByUser = response.data;
                 console.log($scope.listOrderByUser);
@@ -88,13 +88,13 @@ app.controller("CartCtrl", function ($scope, $http, $window) {
     $scope.NhanHang = function (item) {
         $http({
             method: 'GET',
-            url: current_url + '/api/Carts/' + item.email +'/'+ item.orderID +'/GetListOrderByEmail',
+            url: current_url + '/api-nguoidung/gio-hang/' + item.email +'/'+ item.orderID +'/GetListOrderByEmail',
         }).then(function (response) {
             $scope.Dssp = response.data;
         });
         $http({
             method: 'PUT',
-            url: current_url + '/api/Carts/' + item.orderID + '/Update-Status-User',
+            url: current_url + '/api-nguoidung/gio-hang/' + item.orderID + '/Update-Status-User',
         }).then(function (response) {
             alert('Nhận hàng thàng công !');
             var ChiTietDonHang = [];
@@ -112,7 +112,7 @@ app.controller("CartCtrl", function ($scope, $http, $window) {
             $http({
                 method: 'POST',
                 data: { CustomerId: $scope.UserName, ExportBillDetails: ChiTietDonHang },
-                url: current_url + '/api/Carts/CreateExportBill',
+                url: current_url + '/api-nguoidung/gio-hang/CreateExportBill',
             }).then(function (response) {
                 $window.location.reload();
             });

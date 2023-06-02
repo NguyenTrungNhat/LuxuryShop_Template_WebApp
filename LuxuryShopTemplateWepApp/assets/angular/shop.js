@@ -11,7 +11,7 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
     $scope.LoadCategoryByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Categories/getCategoriesByLanguage/' + $scope.value,
+            url: current_url + '/api-nguoidung/loai-sp/getCategoriesByLanguage/' + $scope.value,
         }).then(function (response) {
             $scope.listCategories = response.data;
             console.log($scope.listCategories);
@@ -30,7 +30,7 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data: { page: pageActive, pageSize: $scope.pageSize,languageId: $scope.value },
-            url: current_url + '/api/Product/getProductByLanguage',
+            url: current_url + '/api-nguoidung/san-pham/getProductByLanguage',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
             $scope.totalPages= new Array((Math.ceil(response.data.totalItems / response.data.pageSize)));
@@ -61,7 +61,7 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data: { page: $scope.page, pageSize: $scope.pageSizeCate,CatID: x.catID, languageId: $scope.value },
-            url: current_url + '/api/Product/getProductByCate',
+            url: current_url + '/api-nguoidung/san-pham/getProductByCate',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
         });
@@ -77,7 +77,7 @@ app.controller("ShopCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data: { Quantity: $scope.QuantitySeller,LanguageId: $scope.value },
-            url: current_url + '/api/Product/getProductBestSeller',
+            url: current_url + '/api-nguoidung/san-pham/getProductBestSeller',
         }).then(function (response) {
             $scope.listProductsBestSeller = response.data;
             console.log($scope.listProductsBestSeller);

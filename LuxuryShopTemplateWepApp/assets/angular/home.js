@@ -16,7 +16,7 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
     $scope.LoadCategoryByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Categories/getCategoriesByLanguage/' + $scope.value,
+            url: current_url + '/api-nguoidung/loai-sp/getCategoriesByLanguage/' + $scope.value,
         }).then(function (response) {
             $scope.listCategories = response.data;
             console.log($scope.listCategories);
@@ -30,7 +30,7 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data: { page: $scope.page, pageSize: $scope.pageSize,languageId: $scope.value },
-            url: current_url + '/api/Product/getProductByLanguage',
+            url: current_url + '/api-nguoidung/san-pham/getProductByLanguage',
         }).then(function (response) {
             $scope.listProducts = response.data.data;
             console.log($scope.listProducts);
@@ -44,7 +44,7 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data: { Quantity: $scope.Quantity,LanguageId: $scope.value },
-            url: current_url + '/api/Product/getProductNew',
+            url: current_url + '/api-nguoidung/san-pham/getProductNew',
         }).then(function (response) {
             $scope.listProductsNew = response.data;
             console.log($scope.listProductsNew);
@@ -57,7 +57,7 @@ app.controller("HomeCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data: { Quantity: $scope.QuantitySeller,LanguageId: $scope.value },
-            url: current_url + '/api/Product/getProductBestSeller',
+            url: current_url + '/api-nguoidung/san-pham/getProductBestSeller',
         }).then(function (response) {
             $scope.listProductsBestSeller = response.data;
             console.log($scope.listProductsBestSeller);

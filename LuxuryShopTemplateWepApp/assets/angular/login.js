@@ -7,7 +7,7 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
         $http({
             method: 'POST', 
             data: { UserName: $scope.userName, Password: $scope.password },
-            url: current_url_admin + '/api/Users/authenticate',
+            url: current_url + '/api-admin/user/authenticate',
         }).then(function (response) { 
             $scope.Token = response.data;
             console.log($scope.Token);
@@ -59,14 +59,14 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
                     'Content-Type': undefined
                 },
                 data: formData,
-                url: current_url + '/api/Users/upload',
+                url: current_url + '/api-admin/user/upload',
             }).then(function (res) {
                 user.Thumb = res.data;
                 $http({
                     method: 'POST',
                     
                     data: user,
-                    url: current_url + '/api/Users/register',
+                    url: current_url + '/api-nguoidung/user/register',
                 }).then(function (response) {
                     alert('Thêm user thành công!');
                     $window.location.reload();
@@ -77,7 +77,7 @@ app.controller("LoginCtrl", function ($scope, $http,$window){
             $http({
                 method: 'POST',
                 data: user,
-                url: current_url + '/api/Users/register',
+                url: current_url + '/api-nguoidung/user/register',
             }).then(function (response) {
                 alert('Thêm user thành công!');
                 $window.location.reload();

@@ -13,7 +13,7 @@ app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
     $scope.LoadCategoryByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Categories/getCategoriesByLanguage/' + $scope.value,
+            url: current_url + '/api-nguoidung/loai-sp/getCategoriesByLanguage/' + $scope.value,
         }).then(function (response) {
             $scope.listCategories = response.data;
             console.log($scope.listCategories);
@@ -25,7 +25,7 @@ app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
     $scope.LoadProductByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Product/GetProductDetail/' + $scope.id +'/'+ $scope.value,
+            url: current_url + '/api-nguoidung/san-pham/GetProductDetail/' + $scope.id +'/'+ $scope.value,
         }).then(function (response) {
             $scope.ProductDetail = response.data;
             $scope.listImageProduct = JSON.parse($scope.ProductDetail.imagePath);
@@ -38,7 +38,7 @@ app.controller("ProductDetailCtrl", function ($scope, $http, $window) {
             $http({
                 method: 'POST',
                 data: { page: $scope.page, pageSize: $scope.pageSize,CatID: $scope.ProductDetail.catID, languageId: $scope.value },
-                url: current_url + '/api/Product/getProductByCate',
+                url: current_url + '/api-nguoidung/san-pham/getProductByCate',
             }).then(function (response) {
                 $scope.listProductWithCate = response.data.data;
                 console.log($scope.listProductWithCate);

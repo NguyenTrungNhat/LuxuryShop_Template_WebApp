@@ -16,7 +16,7 @@ app.controller("CheckoutCtrl", function ($scope, $http, $window) {
     $scope.LoadCategoryByLanguage = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/Categories/getCategoriesByLanguage/' + $scope.value,
+            url: current_url + '/api-nguoidung/loai-sp/getCategoriesByLanguage/' + $scope.value,
         }).then(function (response) {
             $scope.listCategories = response.data;
             console.log($scope.listCategories);
@@ -56,7 +56,7 @@ app.controller("CheckoutCtrl", function ($scope, $http, $window) {
         $http({
             method: 'POST',
             data : {Customer : KhachHang, OrderDetails : ChiTietDonHang},
-            url: current_url + '/api/Carts/CreateOrder',
+            url: current_url + '/api-nguoidung/gio-hang/CreateOrder',
         }).then(function (response) {
             alert('Thanh toán thành công !');
             localStorage.removeItem('cart');
